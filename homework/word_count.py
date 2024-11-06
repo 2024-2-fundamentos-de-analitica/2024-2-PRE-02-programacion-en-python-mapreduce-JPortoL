@@ -27,7 +27,7 @@ import string
 def load_input(input_directory):
     """Funcion load_input"""
     sequence = []
-    files = glob.glob(f"{input_directory}/*")
+    files = glob.glob(f'{input_directory}/*')
     with fileinput.input(files=files) as f:
         for line in f:
             sequence.append((fileinput.filename(), line))
@@ -42,7 +42,7 @@ def load_input(input_directory):
 def line_preprocessing(sequence):
     """Line Preprocessing"""
     sequence = [
-        (key, value.translate(str.maketrans("", "", string.punctuation)).lower().strip())
+        (key, value.translate(str.maketrans('', '', string.punctuation)).lower().strip().strip())
         for key, value in sequence
     ]
     return sequence
@@ -102,6 +102,7 @@ def reducer(sequence):
     return list(result.items())
 
 
+
 #
 # Escriba la función create_ouptput_directory que recibe un nombre de
 # directorio y lo crea. Si el directorio existe, lo borra
@@ -125,9 +126,9 @@ def create_ouptput_directory(output_directory):
 #
 def save_output(output_directory, sequence):
     """Save Output"""
-    with open(f"{output_directory}/part-00000", "w", encoding="utf-8") as f:
+    with open(f'{output_directory}/part-00000', 'w', encoding='utf-8') as f:
         for key, value in sequence:
-            f.write(f"{key}\t{value}\n")
+            f.write(f'{key}\t{value}\n')
 
 
 #
@@ -157,6 +158,6 @@ def run_job(input_directory, output_directory):
 
 if __name__ == "__main__":
     run_job(
-        "input",
-        "output",
+        "files/input",
+        "files/output",
     )
